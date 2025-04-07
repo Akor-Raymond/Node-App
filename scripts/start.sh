@@ -1,8 +1,8 @@
-#!/bin/sh
+#!/bin/bash
 set -e
 
 echo ">>> Starting app in $NODE_ENV"
-
+echo  ">>> 3rd Semester  M02W01 Live Class Practice"
 echo "Running DB Migration!𝌏 ..."
 npm run migration:run
 echo "Database Migration Successful ✅!"
