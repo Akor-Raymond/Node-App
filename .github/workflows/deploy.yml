@@ -4,7 +4,7 @@ on:
     branches:
       - main
       #- "feat/**"
-      #develop
+      - develop
 
 env:
   AWS_REGION: "eu-west-1"
@@ -47,7 +47,7 @@ jobs:
     needs: [build]
     runs-on: ubuntu-latest
     steps:
-      - name: Deploy to EC2 54.74.153.110 ⏳
+      - name: Deploy to EC2 18.203.83.219 ⏳
         uses: appleboy/ssh-action@master
         if: github.ref == 'refs/heads/develop'
         with:
@@ -61,5 +61,5 @@ jobs:
             aws ecr get-login-password --region eu-west-1 | docker login --username AWS --password-stdin ${{ env.AWS_ECR_REGISTRY }}
             docker compose pull node-app
             docker compose down -v --remove-orphans
-            docker compose up -d --force-recreate api
+            docker compose up -d --force-recreate node-app
             docker image prune -af
